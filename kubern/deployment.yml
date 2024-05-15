@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expenses
+  labels:
+    app: expenses
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expenses
+  template:
+    metadata:
+      labels:
+        app: expenses
+    spec:
+      containers:
+      - name: expenses
+        image: yasmine222/expenses
+        ports:
+        - containerPort: 80
