@@ -28,6 +28,19 @@ pipeline {
                 }
             }
         }
+        stage('Pushing Image') {
+            environment {
+                registryCredential = credentials('dockerhubcred')
+            }
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push('latest')
+                    }
+                }
+            }
+        }
+
 
 
     }
